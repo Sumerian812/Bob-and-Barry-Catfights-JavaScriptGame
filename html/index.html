@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel="stylesheet" href="../css/styles.css"> 
+
+
+   <title>Bob & Barry: Catsfights</title>
+  </head>
+  <body>
+    <div class="bg-light">
+        <header><img src="../assets/header.png" class="img-fluid mb-4" alt="Responsive image"></header>
+        <div class="container-fluid">
+          
+          <div class="row"> <!-- start row 1 buttons -->  
+            <div class="col-sm-4 offset-sm-4 text-center">
+                <button id="instruct" type="button" class="btn btn-secondary btn-sm mr-1">Instructions</button>
+                <button id="clear" type="button" class="btn btn-secondary btn-sm mr-1">Clear</button>
+                <button id="audioOff" type="button" class="btn btn-secondary btn-sm mr-1">Audio Off</button>
+                <button id="audioOn" type="button" class="btn btn-secondary btn-sm mr-1">Audio On</button>
+            </div>
+          </div> <!-- end row 1 -->  
+          
+          <div class="row mt-1 mr-1"> <!-- start row 2 msg, canvas, players --> 
+              
+            <div class="col-sm-3"> <!-- message col --> 
+                  <div id="msg" class="text-justify p-3"></div>
+            </div> 
+              
+            <div class="col-sm-6 text-center"> <!-- canvas col --> 
+                <canvas id="map" width="600" height="600"></canvas>
+            </div>
+              
+            <div class="col-sm-3 p-4" id="players"> <!-- players col --> 
+            <div class="row">
+                <div class="col-sm-12 text-center">Number of moves: <span id="moves">0</span></div>
+            </div>
+
+            <div class="row">
+                <p class="col-sm-6 text-left">PLAYER 1: BOB</p>
+                <p class="col-sm-5 offset-sm-1 text-left">CURRENT WEAPON:</p>
+            </div> 
+            <div class="row">
+                <img src="../assets/player1.png"class="col-sm-5 img-fluid" alt="Responsive image" id="Bob">
+                <img id="p1Weapon" src="../assets/claws.png" class="col-sm-5 offset-sm-2 img-fluid" alt="Responsive image">
+            </div>
+            <div class="row progress mb-4 mt-2">
+                    <div id="p1Health" class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100 Health Points</div>
+            </div>
+            
+            <div class="row">
+                    <p class="col-sm-6 text-left">PLAYER 2: BARRY</p>
+                    <p class="col-sm-5 offset-sm-1 text-left">CURRENT WEAPON:</p>
+            </div> 
+            <div class="row">
+                <img src="../assets/player2.png"class="col-sm-5 img-fluid" alt="Responsive image" id="Barry">
+                <img  id="p2Weapon" src="../assets/claws.png"class="col-sm-5 offset-sm-2  img-fluid" alt="Responsive image">
+            </div>
+            <div class="row progress mb-4 mt-2">
+                    <div id="p2Health" class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100 Health Points</div>
+            </div>
+            
+            </div>
+          </div> <!-- end row 2 -->  
+          
+          <footer class="row mt-5" style="height: 150px; background-color: #333333;">
+          </footer>
+            
+             
+          
+        </div> <!-- end fluid contianer -->
+    </div> <!-- end background div -->
+
+    <footer>
+      <div>
+        
+      </div>
+    </footer>
+    
+    
+    <div class="d-none">
+        <img src="../assets/player1.png" id="player1">
+        <img src="../assets/player2.png" id="player2">
+        <img src="../assets/water.png" id="water">
+        <img src="../assets/lemon.png" id="lemon">
+        <img src="../assets/banana.png" id="banana">
+        <img src="../assets/vacuum.png" id="vacuum">
+        <img src="../assets/gameover.png" id="gameover">
+    </div>
+
+    
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous">
+    </script>
+    <script src="../js/game.js"></script>
+   
+
+        
+  </body>
+</html>      
