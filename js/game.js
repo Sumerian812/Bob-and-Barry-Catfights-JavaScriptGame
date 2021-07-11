@@ -627,15 +627,6 @@ $(document).ready(function () {
         document.getElementById('msg').innerHTML = "";
     });
 
-    document.getElementById('audioOff').addEventListener('click', function (e) {
-        speechSynthesis.pause();
-    });
-
-    document.getElementById('audioOn').addEventListener('click', function (e) {
-        speechSynthesis.resume();
-        speechSynthesis.cancel();
-    });
-
     function playAudioMessage(message) {
         speechSynthesis.cancel(); // cancel all previous audio
         msg.text = message;
