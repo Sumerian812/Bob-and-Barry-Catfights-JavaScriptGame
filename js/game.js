@@ -1,5 +1,12 @@
 // when window has loaded, run game
 $(document).ready(function () {
+    const player1Img = document.getElementById("player1");
+    const player2Img = document.getElementById("player2");
+    const waterImg = document.getElementById("water");
+    const lemonImg = document.getElementById("lemon");
+    const bananaImg = document.getElementById("banana");
+    const vacuumImg = document.getElementById("vacuum");
+
     speechSynthesis.cancel();
     ///////////////////////////////////////// AUDIO SETUP ////////////////////////////////////////////////////////
     var msg = new SpeechSynthesisUtterance();
@@ -62,10 +69,7 @@ $(document).ready(function () {
     map.randomize(); // fill map with random values
 
     ///////////////////////////////////////// GLOBAL VARIABLES ////////////////////////////////////////////////////////
-
-    var boxStatus; //declare box status variable 
     var boxSize = 60; // delcare size of box (width and height = 60 px)
-    var key; // delcare variable for pressed key
     var blackBox; // delcare black box object
     var greyBox; // delcare grey box object
     var blackBoxes = []; //delare array for storing all black box objects
@@ -146,7 +150,6 @@ $(document).ready(function () {
     // create item class
     class Item {
         constructor(image, damage, boxStatus, name) {
-
             this.image = image;
             this.damage = damage;
             this.boxStatus = boxStatus;
@@ -157,12 +160,10 @@ $(document).ready(function () {
         }
         // show item on map
         show() {
-
             context.drawImage(this.image, this.col * 60, this.row * 60, boxSize, boxSize);
         }
         // clear item off current position
         clear() {
-
             context.beginPath();
             context.rect(this.col * 60, this.row * 60, boxSize, boxSize);
             context.fillStyle = 'grey';
@@ -287,29 +288,24 @@ $(document).ready(function () {
 
     // create new items and players instances
     var items = {
-
         players:
             [
-                new Player(document.getElementById("player1"), 10, 2, 'Bob', 100),
-                new Player(document.getElementById("player2"), 10, 2, 'Barry', 100)
+                new Player(player1Img, 10, 2, 'Bob', 100),
+                new Player(player2Img, 10, 2, 'Barry', 100)
             ],
         weapons:
             [
-                new Item(document.getElementById("water"), 15, 3, 'water hose'),
-                new Item(document.getElementById("lemon"), 20, 4, 'lemon'),
-                new Item(document.getElementById("banana"), 25, 5, 'banana'),
-                new Item(document.getElementById("vacuum"), 30, 6, 'vacuum cleaner')
+                new Item(waterImg, 15, 3, 'water hose'),
+                new Item(lemonImg, 20, 4, 'lemon'),
+                new Item(bananaImg, 25, 5, 'banana'),
+                new Item(vacuumImg, 30, 6, 'vacuum cleaner')
             ]
     }
 
     ///////////////////////////////////////// GAMEPLAY ////////////////////////////////////////////////////////
 
     //show players and weapons
-    items.players.forEach(player => {
-        player.show()
-        console.log("showing_player " + player.name)
-        console.log(document.getElementById("player1"))
-    });
+    items.players.forEach(player => player.show());
     items.weapons.forEach(weapon => weapon.show());
 
     updatePlayerValues(); // set values of player boxes to 2
