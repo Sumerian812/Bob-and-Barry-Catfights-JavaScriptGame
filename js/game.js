@@ -142,8 +142,9 @@ $(document).ready(function () {
 
     // create item class
     class Item {
-        constructor(image, damage, boxStatus, name) {
-            this.image = image;
+        constructor(imageSrc, damage, boxStatus, name) {
+            this.imageSrc = imageSrc;
+            this.image = new Image();
             this.damage = damage;
             this.boxStatus = boxStatus;
             this.name = name;
@@ -152,12 +153,19 @@ $(document).ready(function () {
             this.col = position[1];
         }
         // show item on map
-        show(src) {
-            loadImage(src).then(img => {
+        show() {
+            this.loadImage(this.imageSrc).then(img => {
                 context.drawImage(img, this.col * 60, this.row * 60, boxSize, boxSize);
             });
-
-
+        }
+        loadImage(url) {
+            // Promise that waits for image to finish loading before drwaing it on the map
+            return new Promise(resolve => {
+                this.image.addEventListener('load', () => {
+                    resolve(this.image);
+                });
+                this.image.src = url;
+            });
         }
         // clear item off current position
         clear() {
@@ -169,17 +177,6 @@ $(document).ready(function () {
             context.strokeStyle = 'white';
             context.stroke();
         }
-    }
-
-    function loadImage(url) {
-        // Promise that waits for image to finish loading before drwaing it on the map
-        return new Promise(resolve => {
-            const image = new Image();
-            image.addEventListener('load', () => {
-                resolve(image);
-            });
-            image.src = url;
-        });
     }
     // create child class player which extends the item class
     class Player extends Item {
@@ -310,8 +307,8 @@ $(document).ready(function () {
 
     ///////////////////////////////////////// GAMEPLAY ////////////////////////////////////////////////////////
     //show players and weapons
-    items.players.forEach(player => player.show(player.image));
-    items.weapons.forEach(weapon => weapon.show(weapon.image));
+    items.players.forEach(player => player.show());
+    items.weapons.forEach(weapon => weapon.show());
 
     updatePlayerValues(); // set values of player boxes to 2
     updateWeaponValues(); // set values of weapon boxes to weapon values
