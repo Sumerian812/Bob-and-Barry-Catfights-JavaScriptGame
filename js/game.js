@@ -305,13 +305,12 @@ $(document).ready(function () {
     ///////////////////////////////////////// GAMEPLAY ////////////////////////////////////////////////////////
 
     //show players and weapons
-    for (var i = 0; i < items.players.length; i++) {
-        items.players[i].show();
-    }
-
-    for (var i = 0; i < items.weapons.length; i++) {
-        items.weapons[i].show();
-    }
+    items.players.forEach(player => {
+        player.show()
+        console.log("showing_player " + player.name)
+        console.log(document.getElementById("player1"))
+    });
+    items.weapons.forEach(weapon => weapon.show());
 
     updatePlayerValues(); // set values of player boxes to 2
     updateWeaponValues(); // set values of weapon boxes to weapon values
