@@ -278,25 +278,19 @@ $(document).ready(function () {
     }
 
     ///////////////////////////////////////// LOAD WEAPONS & PLAYERS ////////////////////////////////////////////////////////
-    const player1Img = document.getElementById("player1");
-    const player2Img = document.getElementById("player2");
-    const waterImg = document.getElementById("water");
-    const lemonImg = document.getElementById("lemon");
-    const bananaImg = document.getElementById("banana");
-    const vacuumImg = document.getElementById("vacuum");
     // create new items and players instances
     var items = {
         players:
             [
-                new Player(player1Img, 10, 2, 'Bob', 100),
-                new Player(player2Img, 10, 2, 'Barry', 100)
+                new Player($("img#player1")[0], 10, 2, 'Bob', 100),
+                new Player($("img#player2")[0], 10, 2, 'Barry', 100)
             ],
         weapons:
             [
-                new Item(waterImg, 15, 3, 'water hose'),
-                new Item(lemonImg, 20, 4, 'lemon'),
-                new Item(bananaImg, 25, 5, 'banana'),
-                new Item(vacuumImg, 30, 6, 'vacuum cleaner')
+                new Item($("img#water")[0], 15, 3, 'water hose'),
+                new Item($("img#lemon")[0], 20, 4, 'lemon'),
+                new Item($("img#banana")[0], 25, 5, 'banana'),
+                new Item($("img#vacuum")[0], 30, 6, 'vacuum cleaner')
             ]
     }
 
