@@ -295,8 +295,8 @@ $(document).ready(function () {
     }
 
     ///////////////////////////////////////// GAMEPLAY ////////////////////////////////////////////////////////
-
     //show players and weapons
+    console.log(items);
     items.players.forEach(player => player.show());
     items.weapons.forEach(weapon => weapon.show());
 
