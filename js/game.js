@@ -1,12 +1,5 @@
 // when window has loaded, run game
 $(document).ready(function () {
-    const player1Img = document.getElementById("player1");
-    const player2Img = document.getElementById("player2");
-    const waterImg = document.getElementById("water");
-    const lemonImg = document.getElementById("lemon");
-    const bananaImg = document.getElementById("banana");
-    const vacuumImg = document.getElementById("vacuum");
-
     speechSynthesis.cancel();
     ///////////////////////////////////////// AUDIO SETUP ////////////////////////////////////////////////////////
     var msg = new SpeechSynthesisUtterance();
@@ -285,7 +278,12 @@ $(document).ready(function () {
     }
 
     ///////////////////////////////////////// LOAD WEAPONS & PLAYERS ////////////////////////////////////////////////////////
-
+    const player1Img = document.getElementById("player1");
+    const player2Img = document.getElementById("player2");
+    const waterImg = document.getElementById("water");
+    const lemonImg = document.getElementById("lemon");
+    const bananaImg = document.getElementById("banana");
+    const vacuumImg = document.getElementById("vacuum");
     // create new items and players instances
     var items = {
         players:
