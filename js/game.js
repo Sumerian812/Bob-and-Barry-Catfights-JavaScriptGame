@@ -152,8 +152,12 @@ $(document).ready(function () {
             this.col = position[1];
         }
         // show item on map
-        show() {
-            context.drawImage(this.image, this.col * 60, this.row * 60, boxSize, boxSize);
+        show(src) {
+            loadImage(src).then(img => {
+                context.drawImage(img, this.col * 60, this.row * 60, boxSize, boxSize);
+            });
+
+
         }
         // clear item off current position
         clear() {
@@ -167,6 +171,16 @@ $(document).ready(function () {
         }
     }
 
+    function loadImage(url) {
+        // Promise that waits for image to finish loading before drwaing it on the map
+        return new Promise(resolve => {
+            const image = new Image();
+            image.addEventListener('load', () => {
+                resolve(image);
+            });
+            image.src = url;
+        });
+    }
     // create child class player which extends the item class
     class Player extends Item {
 
@@ -282,23 +296,22 @@ $(document).ready(function () {
     var items = {
         players:
             [
-                new Player($("img#player1")[0], 10, 2, 'Bob', 100),
-                new Player($("img#player2")[0], 10, 2, 'Barry', 100)
+                new Player("./assets/player1.png", 10, 2, 'Bob', 100),
+                new Player("./assets/player2.png", 10, 2, 'Barry', 100)
             ],
         weapons:
             [
-                new Item($("img#water")[0], 15, 3, 'water hose'),
-                new Item($("img#lemon")[0], 20, 4, 'lemon'),
-                new Item($("img#banana")[0], 25, 5, 'banana'),
-                new Item($("img#vacuum")[0], 30, 6, 'vacuum cleaner')
+                new Item("./assets/water.png", 15, 3, 'water hose'),
+                new Item("./assets/lemon.png", 20, 4, 'lemon'),
+                new Item("./assets/banana.png", 25, 5, 'banana'),
+                new Item("./assets/vacuum.png", 30, 6, 'vacuum cleaner')
             ]
     }
 
     ///////////////////////////////////////// GAMEPLAY ////////////////////////////////////////////////////////
     //show players and weapons
-    console.log(items);
-    items.players.forEach(player => player.show());
-    items.weapons.forEach(weapon => weapon.show());
+    items.players.forEach(player => player.show(player.image));
+    items.weapons.forEach(weapon => weapon.show(weapon.image));
 
     updatePlayerValues(); // set values of player boxes to 2
     updateWeaponValues(); // set values of weapon boxes to weapon values
